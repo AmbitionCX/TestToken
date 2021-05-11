@@ -1,4 +1,4 @@
 # TestToken
 Test webhooks in this repository
-* Star this repository, the owner get 0.1 TestToken
-* 
+* Star this repository, the owner gains 0.1 TestToken
+* Open or comment in any issue, the behaviour gains 0.1 TestToken
