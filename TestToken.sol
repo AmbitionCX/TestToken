@@ -1,4 +1,4 @@
-pragma solidity ^0.6.0;
+pragma solidity >=0.7.0 <0.9.0;
 
 interface IERC20 {
 
@@ -16,16 +16,11 @@ interface IERC20 {
 }
 
 
-contract ERC20Basic is IERC20 {
+contract TestToken is IERC20 {
 
-    string public constant name = "ERC20-Test";
-    string public constant symbol = "ERC";
+    string public constant name = "TestToken";
+    string public constant symbol = "TestToken";
     uint8 public constant decimals = 18;
-
-
-    event Approval(address indexed tokenOwner, address indexed spender, uint tokens);
-    event Transfer(address indexed from, address indexed to, uint tokens);
-
 
     mapping(address => uint256) balances;
 
@@ -37,12 +32,12 @@ contract ERC20Basic is IERC20 {
 
 
    constructor(uint256 total) public {
-    totalSupply_ = total;
-    balances[msg.sender] = totalSupply_;
+        totalSupply_ = total;
+        balances[msg.sender] = totalSupply_;
     }
 
     function totalSupply() public override view returns (uint256) {
-    return totalSupply_;
+        return totalSupply_;
     }
 
     function balanceOf(address tokenOwner) public override view returns (uint256) {
@@ -81,14 +76,13 @@ contract ERC20Basic is IERC20 {
 
 library SafeMath {
     function sub(uint256 a, uint256 b) internal pure returns (uint256) {
-      assert(b <= a);
-      return a - b;
+        assert(b <= a);
+        return a - b;
     }
 
     function add(uint256 a, uint256 b) internal pure returns (uint256) {
-      uint256 c = a + b;
-      assert(c >= a);
-      return c;
+        uint256 c = a + b;
+        assert(c >= a);
+        return c;
     }
 }
-
