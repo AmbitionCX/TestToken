@@ -1,2 +1,4 @@
-# ERC20-Basic
-TestToken with webhooks
+# TestToken
+Test webhooks in this repository
+* Star this repository, the owner get 0.1 TestToken
+* 
