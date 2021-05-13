@@ -1,4 +1,5 @@
 # TestToken
-Test webhooks triggering token in this repository
-* Star this repository, the owner gains 0.1 TestToken
-* Open or comment in any issue, the behaviour gains 0.1 TestToken
+Test webhooks triggering token distribution in this repository
+* Star this repository, the owner gains 1 TestToken
+* Open an issue, the behaviour gains 3 TestToken
+* Owner mark an issue as 
