@@ -1,5 +1,5 @@
 # TestToken
 Test _**Events**_ triggering token distribution via webhooks in this repository
-* **Star this repository**, the owner gains 1 TestToken
-* Open an issue, the behaviour gains 3 TestToken
-* Owner mark an issue as "help wanted", the issue opener gains 2 TestToken
+* _**A participator stars this repository**_, the owner gains 1 TestToken
+* _**A participator opens an issue**_, the participator gains 3 TestToken
+* _**The owner marks an issue as "help wanted"**_, the issue opener (participator) gains 2 TestToken
