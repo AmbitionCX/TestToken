@@ -12,7 +12,6 @@ interface IERC20 {
 
 
     event Transfer(address indexed from, address indexed to, uint256 value);
-    event Approval(address indexed owner, address indexed spender, uint256 value);
 }
 
 
@@ -20,11 +19,12 @@ contract TestToken is IERC20 {
 
     string public constant name = "TestToken";
     string public constant symbol = "TestToken";
-    uint8 public constant decimals = 18;
+    uint8 public constant decimals = 0;
+    address Owner_;
 
+    mapping(address => bool) isContri;
+    mapping(uint256 => address) contributors;
     mapping(address => uint256) balances;
-
-    mapping(address => mapping (address => uint256)) allowed;
 
     uint256 totalSupply_;
 
@@ -32,12 +32,27 @@ contract TestToken is IERC20 {
 
 
    constructor(uint256 total) public {
+        Owner_ = msg.sender;
         totalSupply_ = total;
         balances[msg.sender] = totalSupply_;
     }
 
     function totalSupply() public override view returns (uint256) {
         return totalSupply_;
+    }
+
+    function addContributor(address _addr) private {
+        require(Owner_ == msg.sender);
+        isContri[_addr] = true;
+    }
+
+    function deleteContributor(address _addr) private {
+        require(Owner_ == msg.sender);
+        isContri[_addr] = false;
+    }
+
+    function isContributor(address _addr) public view returns (bool) {
+        return isContri[_addr];
     }
 
     function balanceOf(address tokenOwner) public override view returns (uint256) {
@@ -52,25 +67,16 @@ contract TestToken is IERC20 {
         return true;
     }
 
-    function approve(address delegate, uint256 numTokens) public override returns (bool) {
-        allowed[msg.sender][delegate] = numTokens;
-        emit Approval(msg.sender, delegate, numTokens);
-        return true;
+    function approve(address spender, uint256 amount) public override returns (bool) {
+        return false;
     }
 
-    function allowance(address owner, address delegate) public override view returns (uint) {
-        return allowed[owner][delegate];
+    function allowance(address owner, address spender) public override view returns (uint256) {
+        return 0;
     }
 
-    function transferFrom(address owner, address buyer, uint256 numTokens) public override returns (bool) {
-        require(numTokens <= balances[owner]);
-        require(numTokens <= allowed[owner][msg.sender]);
-
-        balances[owner] = balances[owner].sub(numTokens);
-        allowed[owner][msg.sender] = allowed[owner][msg.sender].sub(numTokens);
-        balances[buyer] = balances[buyer].add(numTokens);
-        emit Transfer(owner, buyer, numTokens);
-        return true;
+    function transferFrom(address sender, address recipient, uint256 amount) public override returns (bool) {
+        return false;
     }
 }
 
